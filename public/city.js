@@ -1,4 +1,4 @@
-let url = "https://skole.rasmuslumholdt.dk/CA2-Backend/api/CityInfo/";
+let url = "https://skole.rasmuslumholdt.dk/CA2-Backend/api/cityinfo/";
 
 const getZipCodes = (url) => {
     fetch(url, { method: `GET` })
