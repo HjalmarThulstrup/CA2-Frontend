@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.css'
 
-let url = "http://localhost:8084/CA2/api/CityInfo/";
+let url = "http://localhost:8084/CA2/api/cityinfo/";
 
 const getZipCodes = (url) => {
     fetch(url, { method: `GET` })
