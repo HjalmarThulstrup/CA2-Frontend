@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Person Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Person</h1>
+        <button id="getAllPeople">Get all people with complete info</button>
+        <button id="getAllContacts">Get the contact info of all people</button></br>
+        <button id="getAllPeopleByCity">Get all the people living in the selected city</button><select id="zipSelect"><option>City</option></select></br>
+        <button id="getAllPeopleByHobby">Get all the people with the selected hobby</button><button id="getHobbyPopularity">Get amount of people with the selected hobby</button><select id="hobbySelect"><option>Hobby</option></select></br>
+        
+        <div id="people">
+            <!-- <div class="person">
+                <h3>${el.id + " - " el.lastName + ", " + el.firstName}</h3>
+                <p>"Email: ${el.email}"</p>
+                <p>"Phone: ${el.phone}"</p>
+                <p>"Hobbies: ${el.hobbies}"</p>
+                <p>"Address: ${el.streetAndCity}"</p>
+            </div> -->
+        </div>
+
+        <br>
+        <br>
+        <div>
+            <input id="firstName" placeholder="first name"></input>
+            <input id="lastName" placeholder="last name"></input>
+            <input id="email" placeholder="email"></input>
+            <button id="postNewPerson">create new person</button>
+        </div>
+    </div>
+
+    <script src="person.js"></script>
+</body>
+
+</html>
