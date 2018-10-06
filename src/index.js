@@ -30,10 +30,10 @@ window.onload = () => {
         getZipCodes(url + "zipCodeList");
     });
 
-    document.getElementById("btnSearchZip").addEventListener("click", () =>{
-        let zip = document.getElementById("zipBox").value;
-        getSearchZip(url, zip);
-        document.getElementById("zipCodes").innerHTML = document.getElementById("zipBox").value;
-    })
+//    document.getElementById("btnSearchZip").addEventListener("click", () =>{
+//        let zip = document.getElementById("zipBox").value;
+//        getSearchZip(url, zip);
+//        document.getElementById("zipCodes").innerHTML = document.getElementById("zipBox").value;
+//    })
 
 }
