@@ -12,7 +12,10 @@ const getZipCodes = (url) => {
 }
 
 window.onload = () =>{
+   //document.getElementById("getAddress").addEventListener("click", () =>{
+      //  getZipCodes(url + "2");
+    //})
     document.getElementById("getAddress").addEventListener("click", () =>{
-        getZipCodes(url + "2");
+        getZipCodes("https://skole.rasmuslumholdt.dk/CA2-Backend/api/person/complete");
     })
 }

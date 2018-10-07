@@ -1,10 +1,10 @@
-let url = "https://skole.rasmuslumholdt.dk/CA2-Backend/api/person/";
+let url = "https://skole.rasmuslumholdt.dk/CA2-Backend/api/person";
 
-const getCities = (url) => {
+const getCities = (url, selectId) => {
     fetch(url, { method: `GET` })
         .then((response) => response.json())
         .then((data) => {
-            let select = document.getElementById("zipSelect");
+            let select = document.getElementById(selectId);
 
             for (let i = 0; i < data.length; i++) {
                 let option = document.createElement("option");
@@ -19,11 +19,11 @@ const getCities = (url) => {
         })
 }
 
-const getHobbies = (url) => {
+const getHobbies = (url, selectId) => {
     fetch(url, { method: `GET` })
         .then((response) => response.json())
         .then((data) => {
-            let select = document.getElementById("hobbySelect");
+            let select = document.getElementById(selectId);
 
             for (let i = 0; i < data.length; i++) {
                 let option = document.createElement("option");
@@ -74,21 +74,53 @@ const getHobbyPopularity = (url) => {
         })
 }
 
-const postNewPerson = (url, firstName, lastName, email) => {
+const postNewPerson = (url, firstName, lastName, email, hobby, phone, phoneDesc, address, addressDesc, city) => {
     fetch(url, {
         method: 'post',
         headers: {
             'Accept': 'application/json, text/plain, */*',
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ firstName: firstName, lastName: lastName, email: email })
-    }).then(res => res.json())
-    .then(res => console.log(res));
+        body: JSON.stringify(
+            {
+                email: email,
+                firstName: firstName,
+                lastName: lastName,
+                hobbyList: [
+                    {
+                        id: hobby
+                    }
+                ],
+
+                phoneList: [
+                    {
+                        number: phone,
+                        description: phoneDesc
+                    }],
+
+                address: {
+                    street: address,
+                    additionalInfo: addressDesc,
+                    cityInfo: {
+                        zipCode: city
+                    }
+                }
+
+
+
+            })
+    }).then((res) => {
+        console.log(res);
+        return res.json();
+    })
+        .then(res => console.log(res));
 }
 
 window.onload = () => {
-    getCities("https://skole.rasmuslumholdt.dk/CA2-Backend/api/cityinfo/zipCodeList");
-    getHobbies("https://skole.rasmuslumholdt.dk/CA2-Backend/api/hobby/")
+    getCities("https://skole.rasmuslumholdt.dk/CA2-Backend/api/cityinfo/zipCodeList", "zipSelect")
+    getCities("https://skole.rasmuslumholdt.dk/CA2-Backend/api/cityinfo/zipCodeList", "city");
+    getHobbies("https://skole.rasmuslumholdt.dk/CA2-Backend/api/hobby/", "hobbySelect");
+    getHobbies("https://skole.rasmuslumholdt.dk/CA2-Backend/api/hobby/", "hobby");
 
     document.getElementById("getAllPeople").addEventListener("click", () => {
         getAllPeople(url + "complete");
@@ -116,7 +148,14 @@ window.onload = () => {
         let firstName = document.getElementById("firstName").value;
         let lastName = document.getElementById("lastName").value;
         let email = document.getElementById("email").value;
+        let hobby = document.getElementById("hobby").value;
+        let phone = document.getElementById("phone").value;
+        let phonedesc = document.getElementById("phonedesc").value;
+        let addressName = document.getElementById("addressName").value;
+        let addressDesc = document.getElementById("addressDesc").value;
+        let city = document.getElementById("city").value;
 
-        postNewPerson(url, firstName, lastName, email);
+
+        postNewPerson(url, firstName, lastName, email, hobby, phone, phonedesc, addressName, addressDesc, city);
     })
 }
