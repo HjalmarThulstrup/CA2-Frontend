@@ -1,4 +1,4 @@
-let url = "https://skole.rasmuslumholdt.dk/CA2-Backend/api/person";
+let url = "https://skole.rasmuslumholdt.dk/CA2-Backend/api/person/";
 
 const getCities = (url, selectId) => {
     fetch(url, { method: `GET` })
@@ -157,5 +157,6 @@ window.onload = () => {
 
 
         postNewPerson(url, firstName, lastName, email, hobby, phone, phonedesc, addressName, addressDesc, city);
+
     })
 }
